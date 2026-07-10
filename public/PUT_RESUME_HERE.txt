@@ -1,0 +1,8 @@
+Add your resume file here and name it exactly:
+
+    resume.pdf
+
+The "Download Resume" button in the Hero section links to /resume.pdf.
+Once you drop your real resume PDF into this /public folder (replacing
+this note if you like), the button will work immediately — no code
+changes needed.
