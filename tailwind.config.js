@@ -5,18 +5,30 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Apple-inspired palette
         primary: {
-          DEFAULT: '#2563EB',
-          dark: '#0F172A',
-          darker: '#111827',
+          DEFAULT: '#0071E3',    // Apple Blue — CTAs, links, interactive elements
+          hover:   '#0066CC',    // Apple Blue hover state
+          dark:    '#004FB8',    // Deep Apple Blue for dark mode accents
+          darker:  '#1D1D1F',   // Shark off-black
         },
         accent: {
-          sky: '#38BDF8',
-          teal: '#14B8A6',
+          sky:  '#0071E3',       // Reuse Apple Blue for sky accent
+          teal: '#0066CC',       // Apple Blue variant for teal accent
+          gray: '#6E6E73',       // Apple Gray — secondary text, metadata
+        },
+        apple: {
+          blue:    '#0071E3',    // Primary CTA blue
+          blueDark: '#0066CC',   // Alt/hover blue
+          black:   '#1D1D1F',    // Shark off-black — headlines, nav, body text
+          gray:    '#6E6E73',    // Secondary text, metadata, dividers
+          grayBg:  '#F5F5F7',    // Soft background surfaces, footers
+          white:   '#FFFFFF',    // Main canvas
         },
         surface: {
-          light: '#FFFFFF',
-          dark: '#0B1120',
+          light: '#FFFFFF',      // Main canvas — pure white
+          soft:  '#F5F5F7',      // Apple gray background for sections
+          dark:  '#1D1D1F',      // Shark off-black for dark mode background
         },
       },
       fontFamily: {
@@ -25,9 +37,9 @@ export default {
       },
       backgroundImage: {
         'grid-light':
-          'linear-gradient(to right, rgba(15,23,42,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,23,42,0.04) 1px, transparent 1px)',
+          'linear-gradient(to right, rgba(29,29,31,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(29,29,31,0.04) 1px, transparent 1px)',
         'grid-dark':
-          'linear-gradient(to right, rgba(148,163,184,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(148,163,184,0.06) 1px, transparent 1px)',
+          'linear-gradient(to right, rgba(110,110,115,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(110,110,115,0.08) 1px, transparent 1px)',
       },
       backgroundSize: {
         grid: '40px 40px',
@@ -61,3 +73,4 @@ export default {
   },
   plugins: [],
 }
+

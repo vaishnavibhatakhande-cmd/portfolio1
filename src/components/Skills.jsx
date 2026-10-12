@@ -12,7 +12,7 @@ const fadeUp = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="section-padding bg-slate-50/70 dark:bg-white/[0.02]">
+    <section id="skills" className="section-padding bg-[#F5F5F7] dark:bg-white/[0.02]">
       <div className="container-section">
         <motion.p
           className="eyebrow"
@@ -31,14 +31,24 @@ export default function Skills() {
         >
           A toolbox built for building &amp; breaking things (on purpose)
         </motion.h2>
+
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          style={{ transformOrigin: 'left' }}
+          className="h-1 w-20 rounded-full bg-gradient-to-r from-[#0071E3] to-[#40A9FF] my-4"
+        />
+
         <motion.p
-          className="section-subtitle"
+          className="section-subtitle !mt-0"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
+          transition={{ delay: 0.15 }}
         >
-          From backend APIs to AI agents to test plans — technologies I reach for daily.
+          From Playwright automation frameworks and STLC test plans to Postman API testing and Python development.
         </motion.p>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -46,14 +56,14 @@ export default function Skills() {
             <motion.div
               key={group.category}
               className="glass-card p-6"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: (gi % 3) * 0.08 }}
-              whileHover={{ y: -6, boxShadow: '0 20px 40px -20px rgba(37,99,235,0.25)' }}
+              initial={{ opacity: 0, y: 40, scale: 0.94 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: gi * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -8, scale: 1.02, boxShadow: '0 20px 40px -20px rgba(0,113,227,0.3)' }}
             >
               <div className="flex items-center gap-2 mb-4">
-                <span className="h-2 w-2 rounded-full bg-gradient-to-r from-primary to-accent-teal" />
+                <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#0071E3] to-[#0066CC]" />
                 <h3 className="font-display text-sm font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-200">
                   {group.category}
                 </h3>

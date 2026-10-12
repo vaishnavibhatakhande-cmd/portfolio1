@@ -1,43 +1,104 @@
 export const projects = [
   {
-    title: 'AI Data Intelligence Platform',
+    title: 'Dharwad Hubballi Tutor — Automation Framework',
+    category: 'QA Automation',
     description:
-      'An AI-powered enterprise analytics platform that supports natural language querying over graph databases using multi-agent workflows — turning plain-English questions into governed, explainable answers.',
-    tech: ['LangGraph', 'Neo4j', 'OpenRouter', 'Ragas', 'Opik'],
+      'An end-to-end test automation framework using Playwright with Python and JavaScript following the Page Object Model (POM) to validate real-time educational portal workflows across Chromium, Firefox, and WebKit.',
+    tech: ['Playwright', 'Python', 'JavaScript/TypeScript', 'GitHub Actions', 'Page Object Model', 'HTML Reports'],
     features: [
-      'Multi-agent orchestration for complex reasoning chains',
-      'Natural language to graph-query translation',
-      'Automated evaluation with Ragas & observability via Opik',
+      'Automated course navigation, registration, demo, contact, internship & placement workflows',
+      'Cross-browser test execution across Chromium, Firefox, and WebKit engines',
+      'CI/CD integration via GitHub Actions with automated HTML test reporting',
     ],
     github: 'https://github.com/vaishnavibhatakhande-cmd',
-    demo: '#',
+    demo: 'https://www.dharwadhubballitutor.com/',
     accent: 'from-primary to-accent-teal',
   },
   {
-    title: 'Women Health Care Management System',
+    title: 'Arna Tours & Travels — QA & Test Automation',
+    category: 'Manual & Automation QA',
     description:
-      'A full-stack healthcare platform enabling patients and providers to manage appointments and medical records securely, with role-based access across the system.',
-    tech: ['Python', 'Flask', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
+      'Comprehensive manual and automation testing of a travel booking application covering functional, positive/negative, regression, and UI test cases with detailed execution evidence.',
+    tech: ['Manual Testing', 'Playwright', 'JavaScript', 'Playwright Test', 'Regression Testing', 'UI Validation'],
     features: [
-      'Role-based authentication for patients & providers',
-      'RESTful APIs for records and scheduling',
-      'Appointment management with real-time status',
-      'Secure, structured medical record storage',
+      'Validated login, tour search, booking, payment, cancellation, and admin functionalities',
+      'Automated critical workflows with Playwright Test and assertion libraries',
+      'Documented complete test suites with execution evidence and bug reports',
     ],
     github: 'https://github.com/vaishnavibhatakhande-cmd',
     demo: '#',
     accent: 'from-accent-teal to-primary',
   },
   {
-    title: 'IT Infrastructure Monitoring & Reporting System',
+    title: 'Institute Management Automation Framework',
+    category: 'QA Automation',
     description:
-      'A monitoring suite that keeps an eye on infrastructure health in real time, surfacing operational dashboards and alerts before small issues become outages.',
-    tech: ['Python', 'Flask', 'MySQL'],
+      'A robust Python-based UI test automation framework designed with Pytest and Page Object Model, leveraging Data-Driven Testing (DDT) for maintainability and scalability.',
+    tech: ['Python', 'Playwright', 'PyTest', 'Data-Driven Testing (DDT)', 'POM', 'HTML Reports'],
     features: [
-      'Real-time monitoring of infrastructure metrics',
-      'Operational dashboards for at-a-glance health checks',
-      'Configurable alert system for critical thresholds',
-      'Secure database layer for historical reporting',
+      'Automated sanity test suites for login, course creation, trainer, and enquiry workflows',
+      'Data-driven testing methodology with external fixtures for high reusability',
+      'Automated failure screenshots, visual assertions, and rich HTML test reports',
+    ],
+    github: 'https://github.com/vaishnavibhatakhande-cmd',
+    demo: 'https://github.com/vaishnavibhatakhande-cmd',
+    accent: 'from-primary to-accent-sky',
+  },
+  {
+    title: 'HR Management System',
+    category: 'Full Stack Development',
+    description:
+      'A full-stack HR Management System built with authentication, employee profile tracking, and department management deployed on Vercel for public access.',
+    tech: ['React', 'JavaScript', 'Full Stack Development', 'CRUD Operations', 'Authentication', 'Vercel'],
+    features: [
+      'Secure authentication with role-based access for HR staff and employees',
+      'End-to-end CRUD operations for departments, records, and employee profiles',
+      'Clean, accessible responsive dashboard deployed live on Vercel',
+    ],
+    github: 'https://github.com/vaishnavibhatakhande-cmd',
+    demo: 'https://vaishnavibhatakhande.vercel.app',
+    accent: 'from-accent-sky to-accent-teal',
+  },
+  {
+    title: 'Women Health Care Management System',
+    category: 'Backend & Web Dev',
+    description:
+      'A web-based system to securely manage women’s health records, medical histories, and doctor appointments with role-based access for patients, doctors, and admins.',
+    tech: ['Python', 'Flask', 'MySQL', 'HTML', 'CSS', 'JavaScript', 'REST APIs'],
+    features: [
+      'Role-based authentication securing patient data and doctor portals',
+      'Optimized MySQL relational database schema and RESTful APIs for fast record retrieval',
+      'Streamlined appointment booking and medical history tracking with privacy compliance',
+    ],
+    github: 'https://github.com/vaishnavibhatakhande-cmd',
+    demo: 'https://github.com/vaishnavibhatakhande-cmd',
+    accent: 'from-primary to-accent-teal',
+  },
+  {
+    title: 'Pallaki Residency — Web QA Testing',
+    category: 'Freelance QA',
+    description:
+      'End-to-end manual, smoke, functional, and cross-browser testing for hotel rooms, gallery, amenities, and contact booking modules.',
+    tech: ['Manual Testing', 'Smoke Testing', 'Cross-Browser Testing', 'Responsive UI', 'Defect Retesting'],
+    features: [
+      'Executed structured test scenarios across major mobile and desktop browsers',
+      'Identified UI/UX glitches and functional defects, logging detailed bug reports',
+      'Conducted regression testing cycles ensuring high booking reliability',
+    ],
+    github: 'https://github.com/vaishnavibhatakhande-cmd',
+    demo: '#',
+    accent: 'from-accent-teal to-accent-sky',
+  },
+  {
+    title: 'SachinInfluenceMedia — Quality Assurance',
+    category: 'Freelance QA',
+    description:
+      'System, integration, functional, and data validation testing for influencer analytics, tracking algorithms, and performance reporting modules.',
+    tech: ['Functional Testing', 'System Testing', 'Integration Testing', 'Data Validation', 'Jira'],
+    features: [
+      'Validated end-to-end data pipelines and analytics calculation metrics',
+      'Tested user workflows and reporting modules against business requirements',
+      'Verified defect fixes and maintained defect life cycle to resolution',
     ],
     github: 'https://github.com/vaishnavibhatakhande-cmd',
     demo: '#',
@@ -46,7 +107,15 @@ export const projects = [
 ]
 
 export const highlightCard = {
-  count: '10+',
-  label: 'Backend & Web Projects',
-  tags: ['REST APIs', 'Authentication', 'Database Applications', 'GitHub Repositories'],
+  count: '7+',
+  label: 'QA & Full-Stack Projects',
+  tags: [
+    'Playwright Automation',
+    'Manual & Functional QA',
+    'Postman API Testing',
+    'Page Object Model (POM)',
+    'PyTest & DDT',
+    'Python & Flask',
+  ],
 }
+

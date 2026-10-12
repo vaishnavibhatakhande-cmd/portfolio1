@@ -24,18 +24,27 @@ export default function Certifications() {
           Continuous learning, formalized
         </motion.h2>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          style={{ transformOrigin: 'left' }}
+          className="h-1 w-20 rounded-full bg-gradient-to-r from-[#0071E3] to-[#40A9FF] my-4"
+        />
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {certifications.map((cert, i) => (
             <motion.div
               key={cert.title}
               className="glass-card p-6 text-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.55, delay: i * 0.08 }}
-              whileHover={{ y: -6, rotate: i % 2 === 0 ? -1 : 1 }}
+              initial={{ opacity: 0, y: 40, scale: 0.94 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -8, scale: 1.02, boxShadow: '0 20px 40px -20px rgba(0,113,227,0.3)' }}
             >
-              <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent-teal text-white">
+              <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#0071E3] to-[#0066CC] text-white">
                 <FiAward size={20} />
               </span>
               <p className="mt-4 font-display text-sm font-semibold text-slate-900 dark:text-white">

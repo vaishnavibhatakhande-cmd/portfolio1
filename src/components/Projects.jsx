@@ -10,7 +10,7 @@ export default function Projects() {
   const { repos, loading, error } = useGithubRepos(4)
 
   return (
-    <section id="projects" className="section-padding bg-slate-50/70 dark:bg-white/[0.02]">
+    <section id="projects" className="section-padding bg-[#F5F5F7] dark:bg-white/[0.02]">
       <div className="container-section">
         <motion.p
           className="eyebrow"
@@ -29,14 +29,24 @@ export default function Projects() {
         >
           Things I've built, tested, and shipped
         </motion.h2>
+
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          style={{ transformOrigin: 'left' }}
+          className="h-1 w-20 rounded-full bg-gradient-to-r from-[#0071E3] to-[#40A9FF] my-4"
+        />
+
         <motion.p
-          className="section-subtitle"
+          className="section-subtitle !mt-0"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
+          transition={{ delay: 0.15 }}
         >
-          A mix of AI platforms, full-stack applications, and infrastructure tooling.
+          Test automation frameworks, manual QA verifications, API testing, and full-stack applications.
         </motion.p>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -50,7 +60,7 @@ export default function Projects() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: projects.length * 0.08 }}
             whileHover={{ y: -6 }}
-            className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-accent-teal p-8 text-white flex flex-col justify-center"
+            className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0071E3] to-[#004FB8] p-8 text-white flex flex-col justify-center"
           >
             <p className="font-display text-5xl font-bold">{highlightCard.count}</p>
             <p className="mt-1 text-lg font-medium">{highlightCard.label}</p>
@@ -143,15 +153,6 @@ export default function Projects() {
                   </div>
                 </a>
               ))}
-          </div>
-
-          <div className="mt-6 overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
-            <img
-              src={`https://ghchart.rshah.org/2563EB/${GITHUB_PROFILE.split('/').pop()}`}
-              alt="GitHub contributions graph"
-              className="w-full"
-              loading="lazy"
-            />
           </div>
         </motion.div>
       </div>

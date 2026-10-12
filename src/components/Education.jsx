@@ -4,7 +4,7 @@ import { education } from '../data/education.js'
 
 export default function Education() {
   return (
-    <section id="education" className="section-padding bg-slate-50/70 dark:bg-white/[0.02]">
+    <section id="education" className="section-padding bg-[#F5F5F7] dark:bg-white/[0.02]">
       <div className="container-section">
         <motion.p
           className="eyebrow"
@@ -24,18 +24,27 @@ export default function Education() {
           Academic foundation
         </motion.h2>
 
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          style={{ transformOrigin: 'left' }}
+          className="h-1 w-20 rounded-full bg-gradient-to-r from-[#0071E3] to-[#40A9FF] my-4"
+        />
+
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
           {education.map((edu, i) => (
             <motion.div
               key={edu.level}
               className="glass-card p-6"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.55, delay: i * 0.1 }}
-              whileHover={{ y: -6 }}
+              initial={{ opacity: 0, y: 40, scale: 0.94 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -8, scale: 1.02, boxShadow: '0 20px 40px -20px rgba(0,113,227,0.3)' }}
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 dark:bg-accent-sky/10 text-primary dark:text-accent-sky">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#0071E3]/10 dark:bg-[#0071E3]/15 text-[#0071E3] dark:text-[#0071E3]">
                 <FiBookOpen size={18} />
               </span>
               <p className="mt-4 font-display text-lg font-bold text-slate-900 dark:text-white">
@@ -47,9 +56,16 @@ export default function Education() {
               {edu.board && (
                 <p className="text-xs text-slate-500 dark:text-slate-500">{edu.board}</p>
               )}
-              <p className="mt-3 inline-block rounded-full bg-gradient-to-r from-primary to-accent-teal px-3 py-1 text-xs font-semibold text-white">
-                {edu.score}
-              </p>
+              <div className="mt-4 flex items-center justify-between gap-2">
+                <span className="inline-block rounded-full bg-gradient-to-r from-[#0071E3] to-[#0066CC] px-3 py-1 text-xs font-semibold text-white">
+                  {edu.score}
+                </span>
+                {edu.year && (
+                  <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                    Class of {edu.year}
+                  </span>
+                )}
+              </div>
             </motion.div>
           ))}
         </div>

@@ -4,21 +4,22 @@ import TypingText from './TypingText.jsx'
 import MagneticButton from './MagneticButton.jsx'
 
 const ROLES = [
-  'Software Developer',
-  'QA Engineer',
-  'Python Developer',
-  'AI & Data Enthusiast',
+  'Software Tester / QA Engineer',
+  'Automation Test Engineer (Playwright)',
+  'Manual & API Testing Specialist',
+  'Python & Full-Stack Developer',
 ]
 
 const SOCIALS = [
   { icon: FiGithub, href: 'https://github.com/vaishnavibhatakhande-cmd', label: 'GitHub' },
   {
     icon: FiLinkedin,
-    href: 'https://www.linkedin.com/in/vaishnavi-bhatakhande-050150335',
+    href: 'https://linkedin.com/in/vaishnavi-bhatakhande-050150335',
     label: 'LinkedIn',
   },
-  { icon: FiMail, href: 'mailto:vaishnavibhatakhande.cmd@gmail.com', label: 'Email' },
+  { icon: FiMail, href: 'mailto:vaishnavibhatakhande@gmail.com', label: 'Email' },
 ]
+
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -42,15 +43,15 @@ export default function Hero() {
     >
       {/* Animated gradient blobs */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-primary/30 blur-3xl animate-blob" />
-        <div className="absolute top-1/3 -right-20 h-[28rem] w-[28rem] rounded-full bg-accent-teal/25 blur-3xl animate-blob [animation-delay:3s]" />
-        <div className="absolute -bottom-32 left-1/4 h-80 w-80 rounded-full bg-accent-sky/25 blur-3xl animate-blob [animation-delay:6s]" />
+        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-[#0071E3]/20 blur-3xl animate-blob" />
+        <div className="absolute top-1/3 -right-20 h-[28rem] w-[28rem] rounded-full bg-[#0066CC]/15 blur-3xl animate-blob [animation-delay:3s]" />
+        <div className="absolute -bottom-32 left-1/4 h-80 w-80 rounded-full bg-[#004FB8]/15 blur-3xl animate-blob [animation-delay:6s]" />
 
         {/* Floating particles */}
         {Array.from({ length: 14 }).map((_, i) => (
           <span
             key={i}
-            className="absolute block h-1.5 w-1.5 rounded-full bg-primary/40 dark:bg-accent-sky/50 animate-float"
+            className="absolute block h-1.5 w-1.5 rounded-full bg-[#0071E3]/30 dark:bg-[#0071E3]/40 animate-float"
             style={{
               top: `${(i * 37) % 100}%`,
               left: `${(i * 53) % 100}%`,
@@ -82,13 +83,13 @@ export default function Hero() {
             custom={1}
           >
             Hi, I'm{' '}
-            <span className="bg-gradient-to-r from-primary via-accent-sky to-accent-teal bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
+            <span className="bg-gradient-to-r from-[#0071E3] via-[#0066CC] to-[#004FB8] bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
               Vaishnavi P Bhatakhande
             </span>
           </motion.h1>
 
           <motion.div
-            className="mt-4 h-9 text-xl sm:text-2xl font-display font-semibold text-primary dark:text-accent-sky"
+            className="mt-4 h-9 text-xl sm:text-2xl font-display font-semibold text-[#0071E3] dark:text-[#0071E3]"
             variants={fadeUp}
             initial="hidden"
             animate="visible"
@@ -104,8 +105,9 @@ export default function Hero() {
             animate="visible"
             custom={3}
           >
-            BCA Graduate with hands-on experience building AI systems, backend applications,
-            full-stack projects, REST APIs, and IT Infrastructure Monitoring solutions.
+            Detail-oriented Software Tester / QA Engineer skilled in Manual &amp; Automation
+            Testing, STLC/SDLC, Playwright, Selenium, API Testing, and Full-Stack Development.
+            Passionate about high software quality and robust defect identification.
           </motion.p>
 
           <motion.div
@@ -168,21 +170,21 @@ export default function Hero() {
           transition={{ duration: 0.9, ease: 'easeOut', delay: 0.3 }}
         >
           <div className="relative h-80 w-80 xl:h-96 xl:w-96">
-            <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-primary via-accent-sky to-accent-teal opacity-90 animate-float" />
+            <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-[#0071E3] via-[#0066CC] to-[#004FB8] opacity-90 animate-float" />
             <div className="absolute inset-3 rounded-[2rem] bg-white dark:bg-surface-dark flex items-center justify-center">
               <div className="text-center px-6">
-                <p className="font-display text-6xl font-bold bg-gradient-to-br from-primary to-accent-teal bg-clip-text text-transparent">
+                <p className="font-display text-6xl font-bold bg-gradient-to-br from-[#0071E3] to-[#0066CC] bg-clip-text text-transparent">
                   VB
                 </p>
                 <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
-                  Building things that work — and testing them until they don't break.
+                  Designing robust tests &amp; validating real-time web workflows until they are bug-free.
                 </p>
               </div>
             </div>
             <div className="absolute -bottom-5 -right-5 glass-card px-4 py-3 shadow-xl">
               <p className="text-xs text-slate-500 dark:text-slate-400">Focused on</p>
               <p className="font-display text-sm font-semibold text-slate-800 dark:text-white">
-                AI &amp; Backend Systems
+                QA &amp; Automation Testing
               </p>
             </div>
           </div>

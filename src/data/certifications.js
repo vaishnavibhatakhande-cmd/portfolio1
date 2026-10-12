@@ -1,18 +1,23 @@
 export const certifications = [
   {
-    issuer: 'HP LIFE',
-    title: 'Data Science & Analytics',
+    issuer: 'Certified Course',
+    title: 'Software Testing — Manual & Automation Testing',
+  },
+  {
+    issuer: 'Infokshetra Internship',
+    title: 'Python Full Stack Development using React JS',
+  },
+  {
+    issuer: 'Dharwad Hubballi Tutor',
+    title: 'Software Testing Internship',
   },
   {
     issuer: 'Google Cloud',
     title: 'Introduction to Generative AI',
   },
   {
-    issuer: 'Tata Forage',
-    title: 'Data Visualization',
-  },
-  {
     issuer: 'Innoovatum',
     title: 'UX/UI Design',
   },
 ]
+

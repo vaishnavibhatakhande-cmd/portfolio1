@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Apple-Inspired Color System ─────────────────────────────────────────────
+   White (#FFFFFF)  → Main canvas, product pages
+   Shark (#1D1D1F)  → Headlines, nav, body text (high contrast)
+   Apple Blue (#0071E3 / #0066CC) → CTAs, links, interactive elements
+   Apple Gray (#6E6E73 / #F5F5F7) → Secondary text, dividers, soft backgrounds
+─────────────────────────────────────────────────────────────────────────────── */
+
 @layer base {
   * {
     @apply scroll-smooth;
@@ -12,34 +19,40 @@
   }
 
   body {
-    @apply font-body bg-surface-light text-slate-800 dark:bg-surface-dark dark:text-slate-200 transition-colors duration-300;
+    /* Light: white canvas + Shark body text | Dark: Shark bg + near-white text */
+    @apply font-body bg-surface-light text-[#1D1D1F]
+           dark:bg-[#1D1D1F] dark:text-[#F5F5F7]
+           transition-colors duration-300;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+    /* Shark off-black for all headings */
+    @apply font-display text-[#1D1D1F] dark:text-white;
   }
 
   ::selection {
-    @apply bg-accent-sky/30 text-inherit;
+    background: rgba(0, 113, 227, 0.18);
+    color: inherit;
   }
 
   :focus-visible {
-    outline: 2px solid #38BDF8;
+    outline: 2px solid #0071E3;
     outline-offset: 3px;
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary/40 rounded-full;
+    background: rgba(0, 113, 227, 0.35);
+    border-radius: 99px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary/70;
+    background: rgba(0, 113, 227, 0.6);
   }
 }
 
@@ -52,44 +65,61 @@
     @apply py-24 sm:py-28;
   }
 
+  /* Eyebrow label — Apple Blue */
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-primary dark:text-accent-sky mb-4;
+    @apply inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase
+           text-[#0071E3] dark:text-[#0071E3] mb-4;
   }
 
+  /* Section titles — Shark off-black */
   .section-title {
-    @apply text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4;
+    @apply text-3xl sm:text-4xl font-bold text-[#1D1D1F] dark:text-white mb-4;
   }
 
+  /* Section subtitles — Apple Gray */
   .section-subtitle {
-    @apply text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-2xl;
+    @apply text-base sm:text-lg text-[#6E6E73] dark:text-[#6E6E73] max-w-2xl;
   }
 
+  /* Glass card — white card light / subtle dark surface */
   .glass-card {
-    @apply relative rounded-2xl border border-slate-200/70 dark:border-white/10
-      bg-white/70 dark:bg-white/[0.04] backdrop-blur-xl
-      shadow-[0_1px_0_0_rgba(255,255,255,0.4)_inset]
+    @apply relative rounded-2xl border border-[#1D1D1F]/10 dark:border-white/10
+      bg-white dark:bg-white/[0.04] backdrop-blur-xl
+      shadow-[0_1px_0_0_rgba(255,255,255,0.6)_inset]
       dark:shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset];
   }
 
+  /* Primary button — Apple Blue */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3
-      text-sm font-semibold text-white shadow-lg shadow-primary/25
-      transition-all duration-300 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5
-      active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 rounded-full
+      bg-[#0071E3] px-6 py-3 text-sm font-semibold text-white
+      shadow-lg shadow-[#0071E3]/25
+      transition-all duration-300
+      hover:bg-[#0066CC] hover:shadow-xl hover:shadow-[#0066CC]/35 hover:-translate-y-0.5
+      active:translate-y-0 active:bg-[#004FB8];
   }
 
+  /* Secondary button — Shark border, Apple Blue on hover */
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-slate-300
-      dark:border-white/20 bg-transparent px-6 py-3 text-sm font-semibold text-slate-700
-      dark:text-slate-100 transition-all duration-300 hover:border-primary hover:text-primary
-      dark:hover:border-accent-sky dark:hover:text-accent-sky hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center gap-2 rounded-full
+      border border-[#1D1D1F]/25 dark:border-white/20
+      bg-transparent px-6 py-3 text-sm font-semibold
+      text-[#1D1D1F] dark:text-[#F5F5F7]
+      transition-all duration-300
+      hover:border-[#0071E3] hover:text-[#0071E3]
+      dark:hover:border-[#0071E3] dark:hover:text-[#0071E3]
+      hover:-translate-y-0.5;
   }
 
+  /* Chip / tag badge — Apple Gray background, Shark text */
   .chip {
-    @apply inline-flex items-center rounded-full border border-slate-200 dark:border-white/10
-      bg-slate-50 dark:bg-white/5 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300;
+    @apply inline-flex items-center rounded-full
+      border border-[#1D1D1F]/10 dark:border-white/10
+      bg-[#F5F5F7] dark:bg-white/5
+      px-3 py-1 text-xs font-medium text-[#6E6E73] dark:text-[#6E6E73];
   }
 
+  /* Grid background pattern */
   .bg-grid {
     background-image: theme('backgroundImage.grid-light');
     background-size: theme('backgroundSize.grid');
@@ -97,6 +127,14 @@
   .dark .bg-grid {
     background-image: theme('backgroundImage.grid-dark');
   }
+}
+
+/* Soft background for alternating sections */
+.section-soft-bg {
+  background-color: #F5F5F7;
+}
+.dark .section-soft-bg {
+  background-color: rgba(245, 245, 247, 0.03);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -109,3 +147,4 @@
     scroll-behavior: auto !important;
   }
 }
+

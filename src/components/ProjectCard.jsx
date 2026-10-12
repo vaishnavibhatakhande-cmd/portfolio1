@@ -36,9 +36,16 @@ export default function ProjectCard({ project, index }) {
       />
 
       <div className="relative">
-        <h3 className="font-display text-lg font-semibold text-slate-900 dark:text-white">
-          {project.title}
-        </h3>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <h3 className="font-display text-lg font-semibold text-slate-900 dark:text-white">
+            {project.title}
+          </h3>
+          {project.category && (
+            <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-primary/10 dark:bg-accent-sky/15 text-primary dark:text-accent-sky shrink-0">
+              {project.category}
+            </span>
+          )}
+        </div>
         <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{project.description}</p>
 
         <div className="mt-4 flex flex-wrap gap-2">
@@ -59,22 +66,26 @@ export default function ProjectCard({ project, index }) {
         </ul>
 
         <div className="mt-6 flex items-center gap-3">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-accent-sky transition-colors"
-          >
-            <FiGithub /> GitHub
-          </a>
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-accent-sky transition-colors"
-          >
-            <FiExternalLink /> Live Demo
-          </a>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-accent-sky transition-colors"
+            >
+              <FiGithub /> GitHub
+            </a>
+          )}
+          {project.demo && project.demo !== '#' && (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-primary dark:text-accent-sky hover:underline transition-colors"
+            >
+              <FiExternalLink /> Live Demo
+            </a>
+          )}
         </div>
       </div>
     </motion.div>

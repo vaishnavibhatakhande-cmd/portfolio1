@@ -4,7 +4,7 @@ import AnimatedCounter from './AnimatedCounter.jsx'
 
 export default function Achievements() {
   return (
-    <section className="py-20 bg-gradient-to-r from-primary via-primary to-accent-teal relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-r from-[#0071E3] via-[#0066CC] to-[#004FB8] relative overflow-hidden">
       <div className="absolute inset-0 opacity-20 bg-grid" />
       <div className="container-section relative grid grid-cols-2 gap-8 sm:grid-cols-4">
         {achievements.map((item, i) => (

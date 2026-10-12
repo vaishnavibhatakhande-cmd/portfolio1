@@ -1,20 +1,20 @@
 import { motion } from 'framer-motion'
 import {
-  FiCode,
-  FiDatabase,
   FiCheckCircle,
+  FiCode,
   FiCpu,
+  FiDatabase,
   FiTarget,
   FiUsers,
 } from 'react-icons/fi'
 
 const HIGHLIGHTS = [
-  { icon: FiCode, label: 'Backend Development', desc: 'Flask, REST APIs, clean architecture' },
-  { icon: FiCheckCircle, label: 'Manual Testing', desc: 'White & black box test design' },
-  { icon: FiCpu, label: 'AI Development', desc: 'LangChain, LangGraph, agentic systems' },
-  { icon: FiDatabase, label: 'Database Design', desc: 'MySQL, MongoDB, PostgreSQL, SQLite' },
-  { icon: FiTarget, label: 'Problem Solving', desc: 'Turning ambiguity into shipped features' },
-  { icon: FiUsers, label: 'Agile Methodologies', desc: 'Scrum ceremonies, sprint delivery' },
+  { icon: FiCheckCircle, label: 'Automation Testing', desc: 'Playwright, Selenium, PyTest, POM & DDT' },
+  { icon: FiCheckCircle, label: 'Manual & Functional QA', desc: 'STLC, Regression, Smoke, Sanity, UAT' },
+  { icon: FiDatabase, label: 'API & Database Testing', desc: 'Postman, REST APIs, JSON & SQL CRUD' },
+  { icon: FiUsers, label: 'Agile & Defect Tracking', desc: 'Jira, Bugzilla, Scrum & RCA reporting' },
+  { icon: FiCode, label: 'Python & Web Development', desc: 'Python, Flask, React, Vite, MySQL' },
+  { icon: FiTarget, label: 'Root Cause Analysis', desc: 'Structured defect isolation & test evidence' },
 ]
 
 const fadeUp = {
@@ -42,9 +42,9 @@ export default function About() {
             whileHover={{ y: -6 }}
             transition={{ type: 'spring', stiffness: 200, damping: 18 }}
           >
-            <div className="mx-auto h-28 w-28 rounded-full bg-gradient-to-br from-primary to-accent-teal p-[3px]">
+            <div className="mx-auto h-28 w-28 rounded-full bg-gradient-to-br from-[#0071E3] to-[#0066CC] p-[3px]">
               <div className="flex h-full w-full items-center justify-center rounded-full bg-white dark:bg-surface-dark">
-                <span className="font-display text-3xl font-bold text-primary dark:text-accent-sky">
+                <span className="font-display text-3xl font-bold text-[#0071E3] dark:text-[#0071E3]">
                   VB
                 </span>
               </div>
@@ -53,21 +53,21 @@ export default function About() {
               Vaishnavi P Bhatakhande
             </h3>
             <p className="text-center text-sm text-slate-500 dark:text-slate-400">
-              BCA Graduate · CGPA 7.25
+              BCA Graduate · CGPA 7.25 · Bengaluru
             </p>
 
             <div className="mt-6 grid grid-cols-2 gap-4 border-t border-slate-200 dark:border-white/10 pt-6">
               <div className="text-center">
-                <p className="font-display text-2xl font-bold text-primary dark:text-accent-sky">
-                  10+
+                <p className="font-display text-2xl font-bold text-[#0071E3] dark:text-[#0071E3]">
+                  7+
                 </p>
                 <p className="text-xs text-slate-500 dark:text-slate-400">Projects</p>
               </div>
               <div className="text-center">
-                <p className="font-display text-2xl font-bold text-primary dark:text-accent-sky">
-                  1
+                <p className="font-display text-2xl font-bold text-[#0071E3] dark:text-[#0071E3]">
+                  2
                 </p>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Internship</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Industry Roles</p>
               </div>
             </div>
           </motion.div>
@@ -98,24 +98,33 @@ export default function About() {
             viewport={{ once: true }}
             custom={1}
           >
-            Curious engineer, careful tester, and a builder at heart
+            Detail-oriented QA Engineer committed to bulletproof software quality
           </motion.h2>
+
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            style={{ transformOrigin: 'left' }}
+            className="h-1 w-20 rounded-full bg-gradient-to-r from-[#0071E3] to-[#40A9FF] my-4"
+          />
+
           <motion.p
-            className="section-subtitle"
+            className="section-subtitle !mt-0"
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             custom={2}
           >
-            I'm a BCA graduate (CGPA 7.25) who enjoys the full arc of building software —
-            from designing a database schema to shipping a REST API to making sure it
-            actually works under pressure. During my time as a Software Development Intern
-            at Infokshetra, I worked across backend performance, SQL optimization, and code
-            reviews. Outside of internships, I've built 10+ projects spanning AI systems,
-            full-stack web apps, and infrastructure tooling — always looking for the
-            intersection of clean engineering and real-world impact.
+            Detail-oriented Software Tester / QA Engineer skilled in Manual and Automation
+            Testing, STLC, SDLC, Functional, Regression, Smoke, Sanity, Integration, System,
+            UAT, Exploratory, Compatibility, Usability, and Accessibility Testing. Experienced
+            in test case design, test execution, defect reporting, API Testing, Jira, and Playwright,
+            with a strong focus on software quality and defect identification.
           </motion.p>
+
 
           <div className="mt-10 grid sm:grid-cols-2 gap-4">
             {HIGHLIGHTS.map(({ icon: Icon, label, desc }, i) => (
@@ -129,7 +138,7 @@ export default function About() {
                 whileHover={{ y: -4 }}
                 className="glass-card p-4 flex items-start gap-3"
               >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 dark:bg-accent-sky/10 text-primary dark:text-accent-sky">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0071E3]/10 dark:bg-[#0071E3]/15 text-[#0071E3] dark:text-[#0071E3]">
                   <Icon size={18} />
                 </span>
                 <div>

@@ -21,19 +21,19 @@ const CONTACT_CARDS = [
   {
     icon: FiMail,
     label: 'Email',
-    value: 'vaishnavibhatakhande.cmd@gmail.com',
-    href: 'mailto:vaishnavibhatakhande.cmd@gmail.com',
+    value: 'vaishnavibhatakhande@gmail.com',
+    href: 'mailto:vaishnavibhatakhande@gmail.com',
   },
   {
     icon: FiPhone,
     label: 'Phone',
-    value: '+91 XXXXX XXXXX',
-    href: 'tel:+91XXXXXXXXXX',
+    value: '+91-9353232139',
+    href: 'tel:+919353232139',
   },
   {
     icon: FiMapPin,
     label: 'Location',
-    value: 'Karnataka, India',
+    value: 'Bengaluru, Karnataka',
     href: null,
   },
   {
@@ -46,9 +46,10 @@ const CONTACT_CARDS = [
     icon: FiLinkedin,
     label: 'LinkedIn',
     value: 'vaishnavi-bhatakhande',
-    href: 'https://www.linkedin.com/in/vaishnavi-bhatakhande-050150335',
+    href: 'https://linkedin.com/in/vaishnavi-bhatakhande-050150335',
   },
 ]
+
 
 export default function Contact() {
   const formRef = useRef(null)
@@ -101,7 +102,7 @@ export default function Contact() {
         return
       }
 
-      // 3. Fallback: Submit to FormSubmit.co to vaishnavibhatakhande.cmd@gmail.com
+      // 3. Fallback: Submit to FormSubmit.co to vaishnavibhatakhande@gmail.com
       console.warn(
         'Neither Web3Forms nor EmailJS is configured. Submitting via FormSubmit.co.'
       )
@@ -111,7 +112,7 @@ export default function Contact() {
       const subject = formRef.current.subject?.value || ''
       const message = formRef.current.message?.value || ''
 
-      const response = await fetch('https://formsubmit.co/ajax/vaishnavibhatakhande.cmd@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/vaishnavibhatakhande@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -159,17 +160,27 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ delay: 0.05 }}
           >
-            Let's build something together
+            Let's build &amp; test together
           </motion.h2>
+
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+            style={{ transformOrigin: 'left' }}
+            className="h-1 w-20 rounded-full bg-gradient-to-r from-[#0071E3] to-[#40A9FF] my-4"
+          />
+
           <motion.p
-            className="section-subtitle"
+            className="section-subtitle !mt-0"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: 0.15 }}
           >
-            Open to Software Development, QA, Python, and AI/Data roles — reach out and
-            I'll get back to you soon.
+            Open to Software Testing, QA Automation, and Full-Stack opportunities —
+            feel free to reach out directly.
           </motion.p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
