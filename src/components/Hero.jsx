@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { FiArrowDown, FiDownload, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import TypingText from './TypingText.jsx'
 import MagneticButton from './MagneticButton.jsx'
+import HeroTerminalCard from './HeroTerminalCard.jsx'
 
 const ROLES = [
   'Software Tester / QA Engineer',
@@ -164,30 +165,12 @@ export default function Hero() {
         </div>
 
         <motion.div
-          className="relative mx-auto hidden lg:block"
-          initial={{ opacity: 0, scale: 0.85, rotate: -4 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 0.9, ease: 'easeOut', delay: 0.3 }}
+          className="relative mx-auto flex items-center justify-center lg:justify-end w-full"
+          initial={{ opacity: 0, scale: 0.9, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
         >
-          <div className="relative h-80 w-80 xl:h-96 xl:w-96">
-            <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-[#0071E3] via-[#0066CC] to-[#004FB8] opacity-90 animate-float" />
-            <div className="absolute inset-3 rounded-[2rem] bg-white dark:bg-surface-dark flex items-center justify-center">
-              <div className="text-center px-6">
-                <p className="font-display text-6xl font-bold bg-gradient-to-br from-[#0071E3] to-[#0066CC] bg-clip-text text-transparent">
-                  VB
-                </p>
-                <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
-                  Designing robust tests &amp; validating real-time web workflows until they are bug-free.
-                </p>
-              </div>
-            </div>
-            <div className="absolute -bottom-5 -right-5 glass-card px-4 py-3 shadow-xl">
-              <p className="text-xs text-slate-500 dark:text-slate-400">Focused on</p>
-              <p className="font-display text-sm font-semibold text-slate-800 dark:text-white">
-                QA &amp; Automation Testing
-              </p>
-            </div>
-          </div>
+          <HeroTerminalCard />
         </motion.div>
       </div>
 

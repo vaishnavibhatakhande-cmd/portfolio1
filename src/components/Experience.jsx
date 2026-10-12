@@ -100,10 +100,10 @@ export default function Experience() {
                   {job.points.map((point) => (
                     <li
                       key={point}
-                      className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400"
+                      className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-400"
                     >
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-teal" />
-                      {point}
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0071E3] shadow-[0_0_6px_#0071E3]" />
+                      <span>{point}</span>
                     </li>
                   ))}
                 </ul>

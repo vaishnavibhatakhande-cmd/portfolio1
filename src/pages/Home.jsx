@@ -1,4 +1,5 @@
 import Hero from '../components/Hero.jsx'
+import TechMarquee from '../components/TechMarquee.jsx'
 import About from '../components/About.jsx'
 import Skills from '../components/Skills.jsx'
 import Experience from '../components/Experience.jsx'
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <TechMarquee />
       <SectionDivider />
       <About />
       <SectionDivider />

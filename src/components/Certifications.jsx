@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FiAward } from 'react-icons/fi'
+import { FiAward, FiCheckCircle } from 'react-icons/fi'
 import { certifications } from '../data/certifications.js'
 
 export default function Certifications() {
@@ -12,7 +12,7 @@ export default function Certifications() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Certifications
+          Certifications &amp; Credentials
         </motion.p>
         <motion.h2
           className="section-title"
@@ -37,20 +37,41 @@ export default function Certifications() {
           {certifications.map((cert, i) => (
             <motion.div
               key={cert.title}
-              className="glass-card p-6 text-center"
+              className="glass-card group relative overflow-hidden p-6 text-center border border-slate-200/80 dark:border-white/10 hover:border-[#0071E3]/50 transition-all flex flex-col items-center justify-between"
               initial={{ opacity: 0, y: 40, scale: 0.94 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -8, scale: 1.02, boxShadow: '0 20px 40px -20px rgba(0,113,227,0.3)' }}
+              whileHover={{ y: -8, scale: 1.02 }}
             >
-              <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#0071E3] to-[#0066CC] text-white">
-                <FiAward size={20} />
-              </span>
-              <p className="mt-4 font-display text-sm font-semibold text-slate-900 dark:text-white">
-                {cert.title}
-              </p>
-              <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{cert.issuer}</p>
+              {/* Holographic light sweep on hover */}
+              <div className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/10 to-transparent -rotate-45 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out" />
+
+              {/* Award Icon with Floating Animation */}
+              <div className="relative mb-3 flex items-center justify-center">
+                <div className="absolute -inset-2 rounded-full bg-[#0071E3]/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+                <motion.span
+                  whileHover={{ rotate: [0, -10, 10, 0] }}
+                  transition={{ duration: 0.5 }}
+                  className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0071E3] via-[#0066CC] to-[#004FB8] text-white shadow-lg shadow-[#0071E3]/30"
+                >
+                  <FiAward size={24} />
+                </motion.span>
+              </div>
+
+              <div>
+                <p className="font-display text-base font-bold text-slate-900 dark:text-white group-hover:text-[#0071E3] transition-colors">
+                  {cert.title}
+                </p>
+                <p className="mt-1.5 text-xs text-slate-500 dark:text-slate-400 font-medium">
+                  {cert.issuer}
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 w-full flex items-center justify-center gap-1.5 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+                <FiCheckCircle size={13} />
+                <span>Verified Certification</span>
+              </div>
             </motion.div>
           ))}
         </div>
