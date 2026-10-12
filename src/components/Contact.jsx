@@ -9,6 +9,7 @@ import {
   FiLinkedin,
   FiSend,
   FiLoader,
+  FiCheckCircle,
 } from 'react-icons/fi'
 
 // Load credentials from environment variables (Vite uses import.meta.env)
@@ -308,14 +309,30 @@ export default function Contact() {
           </button>
 
           {status === 'success' && (
-            <p className="mt-4 text-center text-sm font-medium text-accent-teal">
-              Thanks for reaching out! I'll reply as soon as I can.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              className="mt-5 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-center"
+            >
+              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-500/30 mb-2">
+                <FiCheckCircle size={20} />
+              </div>
+              <p className="text-sm font-bold text-emerald-600 dark:text-emerald-400">
+                Message Received!
+              </p>
+              <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
+                Thank you for reaching out, Vaishnavi will get back to you shortly.
+              </p>
+            </motion.div>
           )}
           {status === 'error' && (
-            <p className="mt-4 text-center text-sm font-medium text-red-500">
-              Something went wrong — please email me directly instead.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-5 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-center text-xs font-semibold text-red-500"
+            >
+              Something went wrong — please email directly at vaishnavibhatakhande@gmail.com
+            </motion.div>
           )}
         </motion.form>
       </div>
