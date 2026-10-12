@@ -13,6 +13,7 @@ import {
 } from 'react-icons/fi'
 
 // Load credentials from environment variables (Vite uses import.meta.env)
+const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || ''
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || ''
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || ''
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || ''
@@ -54,14 +55,60 @@ const CONTACT_CARDS = [
 
 export default function Contact() {
   const formRef = useRef(null)
-  const [status, setStatus] = useState('idle') // idle | sending | success | error
+  const [status, setStatus] = useState('idle') // idle | sending | success | error | activation
+  const [lastForm, setLastForm] = useState({ name: '', email: '', subject: '', message: '' })
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setStatus('sending')
 
+    const name = formRef.current?.user_name?.value || ''
+    const email = formRef.current?.user_email?.value || ''
+    const subject = formRef.current?.subject?.value || ''
+    const message = formRef.current?.message?.value || ''
+    setLastForm({ name, email, subject, message })
+
     try {
-      // 1. Check if Web3Forms is configured
+      // 1. Direct Gmail SMTP via /api/contact (using 16-character Google App Password)
+      try {
+        const apiRes = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, subject, message }),
+        })
+        if (apiRes.ok) {
+          const apiData = await apiRes.json()
+          if (apiData.success) {
+            setStatus('success')
+            formRef.current?.reset()
+            return
+          }
+        }
+      } catch (e) {
+        // Fall through to next providers
+      }
+
+      // 2. Check if Google Apps Script is configured
+      if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.trim() !== '') {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            Name: name,
+            Email: email,
+            Subject: subject,
+            Message: message,
+          }),
+        })
+        setStatus('success')
+        formRef.current?.reset()
+        return
+      }
+
+      // 2. Check if Web3Forms is configured
       if (WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY.trim() !== '') {
         const formData = new FormData(formRef.current)
         formData.append('access_key', WEB3FORMS_ACCESS_KEY)
@@ -104,27 +151,18 @@ export default function Contact() {
       }
 
       // 3. Fallback: Submit to FormSubmit.co to vaishnavibhatakhande@gmail.com
-      console.warn(
-        'Neither Web3Forms nor EmailJS is configured. Submitting via FormSubmit.co.'
-      )
-      
-      const name = formRef.current.user_name?.value || ''
-      const email = formRef.current.user_email?.value || ''
-      const subject = formRef.current.subject?.value || ''
-      const message = formRef.current.message?.value || ''
-
       const response = await fetch('https://formsubmit.co/ajax/vaishnavibhatakhande@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          'Accept': 'application/json',
         },
         body: JSON.stringify({
           Name: name,
           Email: email,
           Subject: subject,
-          Message: message
-        })
+          Message: message,
+        }),
       })
 
       const data = await response.json()
@@ -132,6 +170,9 @@ export default function Contact() {
       if (data.success === 'true' || data.success === true) {
         setStatus('success')
         formRef.current?.reset()
+      } else if (data.message && data.message.toLowerCase().includes('activation')) {
+        console.warn('FormSubmit needs one-time activation:', data.message)
+        setStatus('activation')
       } else {
         console.error('FormSubmit Error:', data)
         setStatus('error')
@@ -325,13 +366,46 @@ export default function Contact() {
               </p>
             </motion.div>
           )}
+          {status === 'activation' && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              className="mt-5 p-4 rounded-xl bg-[#0071E3]/10 border border-[#0071E3]/30 text-center"
+            >
+              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-[#0071E3] text-white shadow-lg shadow-[#0071E3]/30 mb-2">
+                <FiMail size={18} />
+              </div>
+              <p className="text-sm font-bold text-[#0071E3]">
+                One-Time Activation Email Sent!
+              </p>
+              <p className="text-xs text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">
+                An <strong>"Activate Form"</strong> email was sent to <strong>vaishnavibhatakhande@gmail.com</strong>.
+                Please open your Gmail and click the link once to enable receiving.
+              </p>
+              <a
+                href={`mailto:vaishnavibhatakhande@gmail.com?subject=${encodeURIComponent(lastForm.subject || 'Portfolio Inquiry')}&body=${encodeURIComponent((lastForm.name ? lastForm.name + ' (' + lastForm.email + ')' : '') + ' wrote:\n\n' + lastForm.message)}`}
+                className="btn-primary mt-3 inline-flex items-center gap-1.5 !py-2 !px-4 text-xs"
+              >
+                <FiSend size={12} /> Send via Email App Now
+              </a>
+            </motion.div>
+          )}
+
           {status === 'error' && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-5 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-center text-xs font-semibold text-red-500"
+              className="mt-5 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-center"
             >
-              Something went wrong — please email directly at vaishnavibhatakhande@gmail.com
+              <p className="text-xs font-semibold text-red-500 mb-2">
+                Unable to submit via online form. Click below to send directly:
+              </p>
+              <a
+                href={`mailto:vaishnavibhatakhande@gmail.com?subject=${encodeURIComponent(lastForm.subject || 'Portfolio Inquiry')}&body=${encodeURIComponent((lastForm.name ? lastForm.name + ' (' + lastForm.email + ')' : '') + ' wrote:\n\n' + lastForm.message)}`}
+                className="btn-primary inline-flex items-center gap-1.5 !py-2 !px-4 text-xs"
+              >
+                <FiSend size={12} /> Send via Mail App Directly
+              </a>
             </motion.div>
           )}
         </motion.form>
